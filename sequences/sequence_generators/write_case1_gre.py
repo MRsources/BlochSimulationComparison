@@ -132,7 +132,7 @@ def main(plot: bool = False, write: bool = True, seq_filename: str = 'case1_gre.
         seq.plot(time_range=(0.0, 2 * TR), stacked=True, show_guides=True)
 
     if write:
-        write_seq(seq, Path(__file__).parent / seq_filename, 'case1_gre')
+        write_seq(seq, Path(__file__).parent / seq_filename, 'case1_gre', NX, NY)
 
     return seq
 

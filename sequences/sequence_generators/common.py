@@ -34,8 +34,10 @@ system = pp.Opts(
 )
 
 
-def write_seq(seq, path, name: str) -> None:
+def write_seq(seq, path, name: str, nx: int | None = None, ny: int | None = None) -> None:
     """Check timing, attach the challenge definitions, and write the published ``.seq``."""
+    if (nx is None) != (ny is None):
+        raise ValueError('nx and ny are set together')
     path = SEQUENCES / Path(path).name
     ok, error_report = seq.check_timing()
     if ok:
@@ -48,5 +50,8 @@ def write_seq(seq, path, name: str) -> None:
     seq.set_definition(key='FOV', value=[FOV, FOV, SLICE_THICKNESS])
     seq.set_definition(key='Name', value=name)
     seq.set_definition(key='B0', value=B0)
+    if nx is not None:
+        seq.set_definition(key='Nx', value=int(nx))
+        seq.set_definition(key='Ny', value=int(ny))
     seq.write(str(path))
     print(f'wrote {path}')

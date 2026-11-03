@@ -51,27 +51,27 @@ A detailed submission description is in [submissions/README.md](submissions/READ
 
 <p align="center">
   Real part<br>
-  <img src="evaluation/case0_fid/case0_fid_real.png" width="90%">
+  <img src="evaluation/case0_fid/case0_fid_real.png?v=20261103165423" width="90%">
 </p>
 
 <p align="center">
   Imaginary part<br>
-  <img src="evaluation/case0_fid/case0_fid_imag.png" width="90%">
+  <img src="evaluation/case0_fid/case0_fid_imag.png?v=20261103165423" width="90%">
 </p>
 
 
 <p align="center">
-  <img src="evaluation/case1_gre/case1_gre.png" width="90%">
+  <img src="evaluation/case1_gre/case1_gre.png?v=20261103165423" width="90%">
 </p>
 
 <p align="center">
-  <img src="evaluation/case2_tse/case2_tse.png" width="90%">
+  <img src="evaluation/case2_tse/case2_tse.png?v=20261103165423" width="90%">
 </p>
 
 <p align="center">
-  <img src="evaluation/case3_epi/case3_epi.png" width="90%">
+  <img src="evaluation/case3_epi/case3_epi.png?v=20261103165423" width="90%">
 </p>
 
 <p align="center">
-  <img src="evaluation/case4_epi_t2star/case4_epi_t2star.png" width="90%">
+  <img src="evaluation/case4_epi_t2star/case4_epi_t2star.png?v=20261103165423" width="90%">
 </p>

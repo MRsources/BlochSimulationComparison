@@ -13,6 +13,8 @@ BlockDurationRaster 1e-05
 FOV 0.256 0.256 0.004 
 GradientRasterTime 1e-05 
 Name case2_tse 
+Nx 64 
+Ny 64 
 RadiofrequencyRasterTime 1e-06 
 TotalDuration 10 
 
@@ -5094,4 +5096,4 @@ num_samples 4
 # It can be reproduced/verified with md5sum if the file trimmed to the position right above [SIGNATURE]
 # The new line character preceding [SIGNATURE] BELONGS to the signature (and needs to be stripped away for recalculating/verification)
 Type md5
-Hash d136ff09f79319b899b55e417f287549
+Hash 5879de196f73924ee480804af1cc22ba

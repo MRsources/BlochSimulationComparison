@@ -260,7 +260,7 @@ def main(plot: bool = False, write: bool = True, seq_filename: str = 'case2_tse.
         seq.plot()
 
     if write:
-        write_seq(seq, Path(__file__).parent / seq_filename, 'case2_tse')
+        write_seq(seq, Path(__file__).parent / seq_filename, 'case2_tse', NX, NY)
 
     return seq
 

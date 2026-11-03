@@ -3,9 +3,9 @@
 The reconstruction uses ``mri-nufft[finufft]==1.5.1``. A different installed
 version stops the script.
 
-Pulseq ``calculate_kspace()`` is in cycles/m. MRI-NUFFT wants those
-locations in [-0.5, 0.5); they are divided by the matrix size over FOV.
-The sign is flipped so ``adj_op`` matches ``fft2`` on a Cartesian grid.
+Pulseq ``calculate_kspace()`` is in cycles/m. The adjoint wants those
+locations in [-0.5, 0.5), so they are multiplied by FOV/N and ordered
+(ky, kx). N is ``Nx`` and ``Ny`` from the sequence definitions.
 
 A ``.npy`` may be any real or complex floating dtype. An HDF5 file carries
 either a complex ``signal`` dataset or float ``signal_real`` and
@@ -84,23 +84,24 @@ def load_signal(path: Path) -> np.ndarray:
     )
 
 
+def _declared_counts(seq: pp.Sequence) -> tuple[int, int]:
+    """``Nx`` and ``Ny`` from the sequence definitions."""
+    missing = [key for key in ('Nx', 'Ny') if key not in seq.definitions]
+    if missing:
+        raise ValueError(
+            'sequence definitions must set Nx and Ny; '
+            f'missing {", ".join(missing)}'
+        )
+    return int(seq.definitions['Nx']), int(seq.definitions['Ny'])
+
+
 def _locations(seq: pp.Sequence) -> tuple[np.ndarray, tuple[int, int]]:
-    k = seq.calculate_kspace()[0]
+    """Pulseq cycles/m scaled by FOV/N, ordered (ky, kx)."""
+    k = np.asarray(seq.calculate_kspace()[0], dtype=np.float64)
     fov = np.asarray(seq.definitions['FOV'][:2], dtype=np.float64)
-    i0 = int(np.argmin(k[0] * k[0] + k[1] * k[1]))
-    step = 1.0 / fov
-    ix = np.rint((k[0] - k[0, i0]) / step[0])
-    iy = np.rint((k[1] - k[1, i0]) / step[1])
-    nx = int(ix.max() - ix.min()) + 1
-    ny = int(iy.max() - iy.min()) + 1
-    locations = np.stack(
-        (
-            -(k[1] - k[1, i0]) * fov[1] / ny,
-            -(k[0] - k[0, i0]) * fov[0] / nx,
-        ),
-        axis=1,
-    )
-    return np.ascontiguousarray(locations, dtype=np.float64), (ny, nx)
+    nx, ny = _declared_counts(seq)
+    locations = np.stack((k[1] * fov[1] / ny, k[0] * fov[0] / nx), axis=1)
+    return np.ascontiguousarray(locations), (ny, nx)
 
 
 def _require_mri_nufft() -> None:

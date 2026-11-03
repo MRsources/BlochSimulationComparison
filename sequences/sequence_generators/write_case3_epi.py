@@ -109,7 +109,7 @@ def main(plot: bool = False, write: bool = True, seq_filename: str = 'case3_epi.
         seq.plot()
 
     if write:
-        write_seq(seq, Path(__file__).parent / seq_filename, 'case3_epi')
+        write_seq(seq, Path(__file__).parent / seq_filename, 'case3_epi', NX, NY)
 
     return seq
 

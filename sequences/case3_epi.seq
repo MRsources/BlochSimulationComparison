@@ -13,6 +13,8 @@ BlockDurationRaster 1e-05
 FOV 0.256 0.256 0.004 
 GradientRasterTime 1e-05 
 Name case3_epi 
+Nx 64 
+Ny 64 
 RadiofrequencyRasterTime 1e-06 
 TotalDuration 0.04752 
 
@@ -3202,4 +3204,4 @@ num_samples 3000
 # It can be reproduced/verified with md5sum if the file trimmed to the position right above [SIGNATURE]
 # The new line character preceding [SIGNATURE] BELONGS to the signature (and needs to be stripped away for recalculating/verification)
 Type md5
-Hash bc2ea2a6fb843ee5d4e53a4454fe75fe
+Hash 5eb5c2d62e44c4d386adf21df352a650

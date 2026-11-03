@@ -246,8 +246,8 @@ def plot_case_grid(
     phases = [np.angle(image) for image in images]
     columns = (
         (kspaces, KSPACE_CMAP, 'lower', 'k-space', 'log10(|k|)', None, (-1.0, 0.0)),
-        (magnitudes, CMAP, 'upper', 'magnitude', '|image|', 0.0, (0.0, 1.0)),
-        (phases, 'twilight', 'upper', 'phase', 'phase (rad)', -np.pi, (-np.pi, np.pi)),
+        (magnitudes, CMAP, 'lower', 'magnitude', '|image|', 0.0, (0.0, 1.0)),
+        (phases, 'twilight', 'lower', 'phase', 'phase (rad)', -np.pi, (-np.pi, np.pi)),
     )
     # Phase is an angle, so every phase bar still runs from −π to π.
     # K-space and magnitude take the range of that panel.
