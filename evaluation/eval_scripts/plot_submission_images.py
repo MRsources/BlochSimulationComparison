@@ -4,8 +4,8 @@ Rows are submissions. Columns are k-space, magnitude, and phase, in that
 order. K-space is log10 of the acquired magnitude. Magnitude is the
 absolute value of the reconstruction. Phase is the angle in radians.
 
-The FID has no readout gradient. It stays a magnitude-versus-time plot of
-the raw ADC.
+The FID has no readout gradient. Its real and imaginary parts are separate
+plots of the raw ADC against time.
 
 Run::
 
@@ -24,7 +24,7 @@ import matplotlib
 
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
-from matplotlib import font_manager
+from matplotlib import font_manager, patheffects
 import numpy as np
 import pypulseq as pp
 
@@ -147,22 +147,89 @@ def _drop_split_plots(folder: Path, stem: str) -> None:
             print(f'removed {path}')
 
 
+# Open shapes and crosses, in plot order. The same index on every trace.
+_FID_MARKERS = 'ox^+sD*'
+_FID_MARKEVERY = 48
+_FID_FACE_ALPHA = 0.30
+
+
+def _separate(ys: np.ndarray, gap: float) -> np.ndarray:
+    """Push sorted values at least ``gap`` apart, then slide the group back."""
+    order = np.argsort(ys)
+    placed = np.array(ys, dtype=float)
+    seq = placed[order].copy()
+    for i in range(1, len(seq)):
+        if seq[i] < seq[i - 1] + gap:
+            seq[i] = seq[i - 1] + gap
+    seq -= np.mean(seq) - np.mean(placed[order])
+    placed[order] = seq
+    return placed
+
+
 def _plot_signal_trace(
-    stem: str, names: list[str], signals: list[np.ndarray], seq_path: Path, out: Path,
+    stem: str, names: list[str], signals: list[np.ndarray], seq_path: Path, folder: Path,
 ) -> None:
-    """Magnitude versus ADC time, for a trajectory that never leaves the centre."""
-    fig, ax = plt.subplots(figsize=(8, 4.2))
-    for name, signal in zip(names, signals):
-        times_ms = adc_time_s(seq_path, signal.size) * 1e3
-        ax.plot(times_ms, np.abs(signal), label=name, linewidth=1.0)
-    ax.set_xlabel('time (ms)')
-    ax.set_ylabel('|signal|')
-    ax.set_title(header(stem), fontproperties=bold_font(14))
-    ax.legend(fontsize=8, loc='best')
-    fig.tight_layout()
-    fig.savefig(out, dpi=140)
-    plt.close(fig)
-    print(f'wrote {out}')
+    """Real and imaginary parts versus ADC time, each in its own figure.
+
+    The trajectory never leaves the centre, so these are the raw ADC.
+
+    """
+    times_ms = adc_time_s(seq_path, signals[0].size) * 1e3
+    parts = (
+        ('real', np.real, 'Re(signal)', 'real part'),
+        ('imag', np.imag, 'Im(signal)', 'imaginary part'),
+    )
+    for suffix, component, ylabel, part_name in parts:
+        fig, ax = plt.subplots(figsize=(8, 4.2))
+        values = []
+        colors = []
+        for index, (name, signal) in enumerate(zip(names, signals)):
+            marker = _FID_MARKERS[index % len(_FID_MARKERS)]
+            shown = component(signal)
+            values.append(shown)
+            line, = ax.plot(
+                times_ms, shown, linestyle=':', linewidth=1.6,
+                marker=marker, markersize=8.2 if marker == '*' else 6.5,
+                markeredgewidth=1.15, markevery=_FID_MARKEVERY,
+            )
+            color = line.get_color()
+            colors.append(color)
+            line.set_markeredgecolor(color)
+            if marker in 'x+|':
+                line.set_markerfacecolor('none')
+            else:
+                line.set_markerfacecolor(matplotlib.colors.to_rgba(color, _FID_FACE_ALPHA))
+        ys = np.array([float(shown[-1]) for shown in values])
+        peak = max(float(np.max(np.abs(shown))) for shown in values)
+        placed = _separate(ys, 0.07 * peak)
+        ymin, ymax = ax.get_ylim()
+        ax.set_ylim(ymin - 0.12 * (ymax - ymin), ymax)
+        ax.spines['right'].set_zorder(0)
+        text_x = float(times_ms[-1]) + 0.02 * float(times_ms[-1] - times_ms[0])
+        for name, y, y_label, color in zip(names, ys, placed, colors):
+            label = ax.annotate(
+                name,
+                xy=(float(times_ms[-1]), float(y)),
+                xytext=(text_x, float(y_label)),
+                ha='left', va='center', fontsize=8, color=color,
+                annotation_clip=False, clip_on=False, zorder=10,
+                bbox=dict(facecolor='white', edgecolor='none', boxstyle='square,pad=0.25'),
+            )
+            label.set_clip_on(False)
+            label.set_path_effects([
+                patheffects.SimplePatchShadow(offset=(0.3, -0.3), shadow_rgbFace='black', alpha=0.85),
+                patheffects.Normal(),
+            ])
+            label.get_bbox_patch().set_clip_on(False)
+            label.get_bbox_patch().set_zorder(10)
+        ax.set_xlabel('time (ms)')
+        ax.set_ylabel(ylabel)
+        ax.set_title(f'{header(stem)}, {part_name}', fontproperties=bold_font(14))
+        fig.tight_layout()
+        dest = folder / f'{stem}_{suffix}.png'
+        fig.savefig(dest, dpi=140)
+        plt.close(fig)
+        print(f'wrote {dest}')
 
 
 def plot_case_grid(
@@ -226,7 +293,7 @@ def plot_case_grid(
 
 
 def plot_submission_images(folders: list[Path], out: Path, sequences: Path) -> None:
-    """Write ``<stem>.png`` for every case and drop the old split panels."""
+    """Write each case figure. The FID is two files; imaging is one."""
     out.mkdir(parents=True, exist_ok=True)
     for index, stem, seq_name, imaging in CASES:
         seq_path = sequences / seq_name
@@ -236,7 +303,7 @@ def plot_submission_images(folders: list[Path], out: Path, sequences: Path) -> N
             _drop_split_plots(folder, stem)
             plot_case_grid(stem, names, signals, images, folder / f'{stem}.png')
         elif names:
-            _plot_signal_trace(stem, names, signals, seq_path, folder / f'{stem}.png')
+            _plot_signal_trace(stem, names, signals, seq_path, folder)
     if out.resolve() == OUT.resolve():
         refresh_readme_figures(REPO / 'README.md')
 

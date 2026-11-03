@@ -8,4 +8,4 @@ An imaging case is one figure, `<stem>.png`. Each submission is a row. The colum
 - Magnitude is the absolute value of the reconstruction.
 - Phase runs from −π to π.
 
-The FID has no readout gradient. Its folder holds a magnitude-versus-time plot of the ADC.
+The FID has no readout gradient. Its folder holds two plots of the ADC against time, `<stem>_real.png` and `<stem>_imag.png`.
