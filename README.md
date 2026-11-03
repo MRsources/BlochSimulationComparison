@@ -50,12 +50,10 @@ A detailed submission description is in [submissions/README.md](submissions/READ
 ## Results
 
 <p align="center">
-  Real part<br>
   <img src="evaluation/case0_fid/case0_fid_real.png" width="90%">
 </p>
 
 <p align="center">
-  Imaginary part<br>
   <img src="evaluation/case0_fid/case0_fid_imag.png" width="90%">
 </p>
 
