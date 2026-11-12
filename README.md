@@ -1,4 +1,4 @@
-# Bloch Simulation Comparison Challenge
+# Bloch Simulation Comparison
 
 Every participant simulates 
 - the **same Pulseq sequences**
