@@ -1,0 +1,6 @@
+hardware: cpu
+case 0       3.3 s   1024 samples  case0.h5
+case 1      42.6 s   4096 samples  case1.h5
+case 2       9.4 s   4096 samples  case2.h5
+case 3      14.4 s   4096 samples  case3.h5
+case 4      14.5 s   4096 samples  case4.h5

@@ -1,39 +1,19 @@
 {
   "group": "zMRI Lab (Prof. Zaiss)",
-  "tool_name": "MR-zero + PDG off resonace extention",
-  "tool_version": "1.1.2",
+  "tool_name": "MR-zero + PDG Offresonance extention",
+  "tool_version": "1.4.0",
   "tool_commit": "",
   "tool_date": "",
   "solver": "",
   "project_page": "https://github.com/MRsources/MRzero-Core",
-  "paper": "https://arxiv.org/pdf/2606.15164",
+  "paper": "https://doi.org/10.48550/arXiv.2606.15164",
   "hardware": "Intel Core i9-10940X",
   "cases": [
-    {
-      "case": 0,
-      "runtime_s": null,
-      "mrzero_runtime_s": null
-    },
-    {
-      "case": 1,
-      "runtime_s": null,
-      "mrzero_runtime_s": null
-    },
-    {
-      "case": 2,
-      "runtime_s": null,
-      "mrzero_runtime_s": null
-    },
-    {
-      "case": 3,
-      "runtime_s": null,
-      "mrzero_runtime_s": null
-    },
-    {
-      "case": 4,
-      "runtime_s": null,
-      "mrzero_runtime_s": null
-    }
+    {"case": 0, "runtime_s": 3.3, "mrzero_runtime_s":null },
+    {"case": 1, "runtime_s": 42.6, "mrzero_runtime_s":null },
+    {"case": 2, "runtime_s": 9.4, "mrzero_runtime_s":null },
+    {"case": 3, "runtime_s": 14.4, "mrzero_runtime_s":null },
+    {"case": 4, "runtime_s": 14.5, "mrzero_runtime_s":null }
   ],
-  "setup_notes": ""
+  "setup_notes": "Uses a block pulse approximation for all pulses."
 }
