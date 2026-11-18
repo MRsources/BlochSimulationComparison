@@ -1,0 +1,311 @@
+{
+  "schema_version": 1,
+  "run_date": "2026-10-27",
+  "github_submitter": "mzaiss",
+  "challenge_repository": "https://github.com/MRsources/BlochSimulationChallenge",
+  "challenge_commit": "4c0d86e74aebf56d2e27b69c1f273483d4b7dbb9",
+  "tool": "mrzero.rapisim_simulate",
+  "tool_version": null,
+  "tool_commit": null,
+  "hardware": null,
+  "timing_note": "No backend compute timings or same-machine MRzero benchmark were exposed; submission timings are null.",
+  "input_sha256": {
+    "sequences/case0_fid.seq": "028337d068137eadce333dc0207ad9ee0941bfa2f666ff58fb2320a8d6fd9633",
+    "sequences/case1_gre.seq": "dbda1eb763af0473a283b2e43d021c4cc2efd6e7b0ada1826b37c753fd17e846",
+    "sequences/case2_tse.seq": "b640e687776374c4f1a5a6b8fc3c584bc4e5567e757a7e2ca884c28341935fa8",
+    "sequences/case3_epi.seq": "538086b96118e981cc23b8b58c46230fbb6364005103714f9c69fad9e9976e4c",
+    "phantoms/brainweb/challenge-brain-4mm.json": "33e78dac495e1ce6f9e58be120e626636b3287416eb9e038ec730f632e315372",
+    "phantoms/brainweb/challenge-brain-4mm-t2star.json": "7e8afd13d3fdbd29322aa64351a044d39bac84b1b6e136755c16ac00cf30f5cc",
+    "phantoms/brainweb/subj05.nii.gz": "cef00f7346f628e809870d83bf685eecf7e41861a5f70eb22759c7ee01f3f985",
+    "phantoms/brainweb/subj05_dB0.nii.gz": "e9ff77aa974d5720de491a852a3ccd055a6edab7056a57c95a8756222bc7c522"
+  },
+  "phantom_archives": [
+    {
+      "file_name": "challenge-brain-4mm.zip",
+      "sha256": "b06dd19ca3047c528ecd7163187f414e9ea84a54a2df9f66b492da40c43f8498",
+      "members": [
+        "challenge-brain-4mm.json",
+        "subj05.nii.gz",
+        "subj05_dB0.nii.gz"
+      ]
+    },
+    {
+      "file_name": "challenge-brain-4mm-t2star.zip",
+      "sha256": "20352e68045e2a3ea7f588058a9501e54a01bacd3109f7c6ad62a2a31b4d60e5",
+      "members": [
+        "challenge-brain-4mm-t2star.json",
+        "subj05.nii.gz",
+        "subj05_dB0.nii.gz"
+      ]
+    }
+  ],
+  "scanner": {
+    "B0_T": 3.0,
+    "gyro_MHz_per_T": 42.5764,
+    "larmor_Hz": 127729200.0,
+    "source": "Unmodified phantom system and Pulseq definitions; no scanner override is exposed by this tool."
+  },
+  "phantom": {
+    "grid_shape": [
+      181,
+      217,
+      4
+    ],
+    "voxel_size_mm": [
+      1,
+      1,
+      1
+    ],
+    "nonempty_voxels": 97653,
+    "resampled": false,
+    "tissue_stats_order": [
+      "csf",
+      "fat",
+      "gm",
+      "vessels",
+      "wm"
+    ],
+    "default_properties": {
+      "B1+": [
+        1
+      ],
+      "B1-": [
+        1
+      ],
+      "ADC": 0
+    },
+    "T2_prime": "infinite for cases 0-3, published values for case 4"
+  },
+  "postprocessing": "Only remove the singleton coil axis and write complex128 to the HDF5 signal dataset. No normalization, phase rotation, conjugation, filtering, reordering, or reconstruction.",
+  "runs": [
+    {
+      "case": 0,
+      "arguments": {
+        "sequence": "028337d068137eadce333dc0207ad9ee0941bfa2f666ff58fb2320a8d6fd9633",
+        "phantom": "b06dd19ca3047c528ecd7163187f414e9ea84a54a2df9f66b492da40c43f8498",
+        "sampler": "direct",
+        "min_mag": 1e-07,
+        "compute_signal_stats": true
+      },
+      "output_signal": {
+        "sha256": "7f0422a2ca4fb1e0bbe61a9657fc522e49aa9306df5d016f0488721053fb530a",
+        "url": "https://mrx-org--mcp-gateway-func.modal.run/files/7f0422a2ca4fb1e0bbe61a9657fc522e49aa9306df5d016f0488721053fb530a"
+      },
+      "output_stats": {
+        "sha256": "a129969fd640774d58882e4e109521d43efea0d82c4434c5ea7e2c55f4db2f05",
+        "url": "https://mrx-org--mcp-gateway-func.modal.run/files/a129969fd640774d58882e4e109521d43efea0d82c4434c5ea7e2c55f4db2f05"
+      },
+      "validation": {
+        "service_shape": [
+          1024,
+          1
+        ],
+        "dtype": "complex128",
+        "all_finite": true,
+        "nonzero": true,
+        "tissue_sum_max_abs_error": 0.0
+      }
+    },
+    {
+      "case": 1,
+      "arguments": {
+        "sequence": "dbda1eb763af0473a283b2e43d021c4cc2efd6e7b0ada1826b37c753fd17e846",
+        "phantom": "b06dd19ca3047c528ecd7163187f414e9ea84a54a2df9f66b492da40c43f8498",
+        "sampler": "direct",
+        "min_mag": 1e-07,
+        "compute_signal_stats": true
+      },
+      "output_signal": {
+        "sha256": "2044466a858eca99fca70af217a810215ebdf4ddff763f8f72256df5fc22a67e",
+        "url": "https://mrx-org--mcp-gateway-func.modal.run/files/2044466a858eca99fca70af217a810215ebdf4ddff763f8f72256df5fc22a67e"
+      },
+      "output_stats": {
+        "sha256": "34320a80c5e103573b636646a6dc10457848aa7a38d734d5407906067043ddd2",
+        "url": "https://mrx-org--mcp-gateway-func.modal.run/files/34320a80c5e103573b636646a6dc10457848aa7a38d734d5407906067043ddd2"
+      },
+      "validation": {
+        "service_shape": [
+          4096,
+          1
+        ],
+        "dtype": "complex128",
+        "all_finite": true,
+        "nonzero": true,
+        "tissue_sum_max_abs_error": 0.0
+      }
+    },
+    {
+      "case": 2,
+      "arguments": {
+        "sequence": "b640e687776374c4f1a5a6b8fc3c584bc4e5567e757a7e2ca884c28341935fa8",
+        "phantom": "b06dd19ca3047c528ecd7163187f414e9ea84a54a2df9f66b492da40c43f8498",
+        "sampler": "direct",
+        "min_mag": 1e-10,
+        "compute_signal_stats": true
+      },
+      "output_signal": {
+        "sha256": "6515b3b87367e5735903420cf17db6df55d6fadac22309c4b7ed77048fdf8b48",
+        "url": "https://mrx-org--mcp-gateway-func.modal.run/files/6515b3b87367e5735903420cf17db6df55d6fadac22309c4b7ed77048fdf8b48"
+      },
+      "output_stats": {
+        "sha256": "97207e33f4fbd3a636217704c7cb42623d587ec032dd40a5a462f9370f9defcb",
+        "url": "https://mrx-org--mcp-gateway-func.modal.run/files/97207e33f4fbd3a636217704c7cb42623d587ec032dd40a5a462f9370f9defcb"
+      },
+      "validation": {
+        "service_shape": [
+          4096,
+          1
+        ],
+        "dtype": "complex128",
+        "all_finite": true,
+        "nonzero": true,
+        "tissue_sum_max_abs_error": 0.0
+      }
+    },
+    {
+      "case": 3,
+      "arguments": {
+        "sequence": "538086b96118e981cc23b8b58c46230fbb6364005103714f9c69fad9e9976e4c",
+        "phantom": "b06dd19ca3047c528ecd7163187f414e9ea84a54a2df9f66b492da40c43f8498",
+        "sampler": "direct",
+        "min_mag": 1e-07,
+        "compute_signal_stats": true
+      },
+      "output_signal": {
+        "sha256": "9ade703848507f72b52255015aef79e9b0a05259d7356cafbc6be2b36d48d765",
+        "url": "https://mrx-org--mcp-gateway-func.modal.run/files/9ade703848507f72b52255015aef79e9b0a05259d7356cafbc6be2b36d48d765"
+      },
+      "output_stats": {
+        "sha256": "0ba209bacaad5800c62599e7966240f5c32df9d3d8e7a8b11326edbf72e7fa07",
+        "url": "https://mrx-org--mcp-gateway-func.modal.run/files/0ba209bacaad5800c62599e7966240f5c32df9d3d8e7a8b11326edbf72e7fa07"
+      },
+      "validation": {
+        "service_shape": [
+          4096,
+          1
+        ],
+        "dtype": "complex128",
+        "all_finite": true,
+        "nonzero": true,
+        "tissue_sum_max_abs_error": 0.0
+      }
+    },
+    {
+      "case": 4,
+      "arguments": {
+        "sequence": "538086b96118e981cc23b8b58c46230fbb6364005103714f9c69fad9e9976e4c",
+        "phantom": "20352e68045e2a3ea7f588058a9501e54a01bacd3109f7c6ad62a2a31b4d60e5",
+        "sampler": "direct",
+        "min_mag": 1e-07,
+        "compute_signal_stats": true
+      },
+      "output_signal": {
+        "sha256": "c63ec5d73dc7313680167f9c54dfedabad24adfde8dfddb1b6f0ea971be19cd8",
+        "url": "https://mrx-org--mcp-gateway-func.modal.run/files/c63ec5d73dc7313680167f9c54dfedabad24adfde8dfddb1b6f0ea971be19cd8"
+      },
+      "output_stats": {
+        "sha256": "e6abf0c93c4f13fbc5f7223bf3d9a651971c0a13481288579ce03a4eeb888c41",
+        "url": "https://mrx-org--mcp-gateway-func.modal.run/files/e6abf0c93c4f13fbc5f7223bf3d9a651971c0a13481288579ce03a4eeb888c41"
+      },
+      "validation": {
+        "service_shape": [
+          4096,
+          1
+        ],
+        "dtype": "complex128",
+        "all_finite": true,
+        "nonzero": true,
+        "tissue_sum_max_abs_error": 0.0
+      }
+    }
+  ],
+  "cutoff_checks": [
+    {
+      "case": 0,
+      "min_mag_coarse": 1e-06,
+      "min_mag_fine": 1e-07,
+      "coarse_signal_sha256": "7f0422a2ca4fb1e0bbe61a9657fc522e49aa9306df5d016f0488721053fb530a",
+      "fine_signal_sha256": "7f0422a2ca4fb1e0bbe61a9657fc522e49aa9306df5d016f0488721053fb530a",
+      "relative_l2_change": 0.0,
+      "byte_identical": true
+    },
+    {
+      "case": 1,
+      "min_mag_coarse": 1e-06,
+      "min_mag_fine": 1e-07,
+      "coarse_signal_sha256": "2044466a858eca99fca70af217a810215ebdf4ddff763f8f72256df5fc22a67e",
+      "fine_signal_sha256": "2044466a858eca99fca70af217a810215ebdf4ddff763f8f72256df5fc22a67e",
+      "relative_l2_change": 0.0,
+      "byte_identical": true
+    },
+    {
+      "case": 3,
+      "min_mag_coarse": 1e-06,
+      "min_mag_fine": 1e-07,
+      "coarse_signal_sha256": "9ade703848507f72b52255015aef79e9b0a05259d7356cafbc6be2b36d48d765",
+      "fine_signal_sha256": "9ade703848507f72b52255015aef79e9b0a05259d7356cafbc6be2b36d48d765",
+      "relative_l2_change": 0.0,
+      "byte_identical": true
+    },
+    {
+      "case": 4,
+      "min_mag_coarse": 1e-06,
+      "min_mag_fine": 1e-07,
+      "coarse_signal_sha256": "c63ec5d73dc7313680167f9c54dfedabad24adfde8dfddb1b6f0ea971be19cd8",
+      "fine_signal_sha256": "c63ec5d73dc7313680167f9c54dfedabad24adfde8dfddb1b6f0ea971be19cd8",
+      "relative_l2_change": 0.0,
+      "byte_identical": true
+    },
+    {
+      "case": 2,
+      "min_mag_coarse": 1e-06,
+      "min_mag_fine": 1e-07,
+      "coarse_signal_sha256": "e3d46051ce958b834de4df283ea8489897c4c75ce3c9cbfe91e100fedad35cd9",
+      "fine_signal_sha256": "439ab9946f95920343700ba1ea2cbfade5bf76560d869c59626dc34c92b504a9",
+      "relative_l2_change": 0.00044292466062749615,
+      "byte_identical": false
+    },
+    {
+      "case": 2,
+      "min_mag_coarse": 1e-07,
+      "min_mag_fine": 1e-08,
+      "coarse_signal_sha256": "439ab9946f95920343700ba1ea2cbfade5bf76560d869c59626dc34c92b504a9",
+      "fine_signal_sha256": "b0b5fd967b9b30cb0e24558345a771edc74a99c73c83f1008b6c55334b4e51f1",
+      "relative_l2_change": 0.00032122665535318446,
+      "byte_identical": false
+    },
+    {
+      "case": 2,
+      "min_mag_coarse": 1e-08,
+      "min_mag_fine": 1e-09,
+      "coarse_signal_sha256": "b0b5fd967b9b30cb0e24558345a771edc74a99c73c83f1008b6c55334b4e51f1",
+      "fine_signal_sha256": "eb52cb70ebd08d55e8010c6391161aa0bf2c6ff4981fe8223a822e086af4ce5c",
+      "relative_l2_change": 0.0003122309974439452,
+      "byte_identical": false
+    },
+    {
+      "case": 2,
+      "min_mag_coarse": 1e-09,
+      "min_mag_fine": 1e-10,
+      "coarse_signal_sha256": "eb52cb70ebd08d55e8010c6391161aa0bf2c6ff4981fe8223a822e086af4ce5c",
+      "fine_signal_sha256": "6515b3b87367e5735903420cf17db6df55d6fadac22309c4b7ed77048fdf8b48",
+      "relative_l2_change": 0.00010919443851155955,
+      "byte_identical": false
+    },
+    {
+      "case": 2,
+      "min_mag_coarse": 1e-10,
+      "min_mag_fine": 1e-11,
+      "coarse_signal_sha256": "6515b3b87367e5735903420cf17db6df55d6fadac22309c4b7ed77048fdf8b48",
+      "fine_signal_sha256": "6515b3b87367e5735903420cf17db6df55d6fadac22309c4b7ed77048fdf8b48",
+      "relative_l2_change": 0.0,
+      "byte_identical": true
+    }
+  ],
+  "limitations": [
+    "Remote backend version/commit and hardware were not reported; tool_date identifies the run.",
+    "The cutoff sweep tests sensitivity to this exposed parameter, not agreement with an independent physics ground truth.",
+    "The service does not expose RF-discretization or internal time-step settings.",
+    "CAS URLs may not remain available indefinitely; the submitted HDF5 files preserve the raw results."
+  ]
+}
