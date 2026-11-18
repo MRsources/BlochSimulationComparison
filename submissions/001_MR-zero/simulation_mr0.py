@@ -27,7 +27,7 @@ import numpy as np
 import torch
 
 here = Path(__file__).resolve().parent
-root = here.parents[0] #modify this so it points to git base directory to run
+root = here.parents[1] #modify this so it points to git base directory to run
 LARMOR = 127.7292e6  # Hz. Published with the sequences.
 
 # Example solver setup, not a challenge rule.
@@ -86,7 +86,7 @@ def write_timings(where: str, lines: list[str]) -> Path:
 
 
 def main() -> None:
-    gpu = use_gpu(sys.argv)
+    gpu = False #use_gpu(sys.argv)
     where = hardware(gpu)
     phantoms: dict[str, object] = {}
     lines: list[str] = []
