@@ -50,26 +50,26 @@ A detailed submission description is in [submissions/README.md](submissions/READ
 ## Results
 
 <p align="center">
-  <img src="evaluation/case0_fid/case0_fid_real.png?v=20261118161415" width="90%">
+  <img src="evaluation/case0_fid/case0_fid_real.png?v=20261119091606" width="90%">
 </p>
 
 <p align="center">
-  <img src="evaluation/case0_fid/case0_fid_imag.png?v=20261118161415" width="90%">
+  <img src="evaluation/case0_fid/case0_fid_imag.png?v=20261119091606" width="90%">
 </p>
 
 
 <p align="center">
-  <img src="evaluation/case1_gre/case1_gre.png?v=20261118161415" width="90%">
+  <img src="evaluation/case1_gre/case1_gre.png?v=20261119091606" width="90%">
 </p>
 
 <p align="center">
-  <img src="evaluation/case2_tse/case2_tse.png?v=20261118161415" width="90%">
+  <img src="evaluation/case2_tse/case2_tse.png?v=20261119091606" width="90%">
 </p>
 
 <p align="center">
-  <img src="evaluation/case3_epi/case3_epi.png?v=20261118161415" width="90%">
+  <img src="evaluation/case3_epi/case3_epi.png?v=20261119091606" width="90%">
 </p>
 
 <p align="center">
-  <img src="evaluation/case4_epi_t2star/case4_epi_t2star.png?v=20261118161415" width="90%">
+  <img src="evaluation/case4_epi_t2star/case4_epi_t2star.png?v=20261119091606" width="90%">
 </p>

@@ -1,6 +1,6 @@
-# MR-zero + PDG Offresonance extention
+# MR-zero + Block Pulse approximation for off-resonant pulses
 
-`002_MRzero-OffRes`
+`002_OffResSim_BlockPulseApproximation`
 
 - Group: zMRI Lab (Prof. Zaiss)
 - Version: 1.4.0

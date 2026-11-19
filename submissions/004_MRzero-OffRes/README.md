@@ -1,6 +1,6 @@
-# MR-zero + PDG Offresonance extention
+# MR-zero + PDG off-resonance extention
 
-`004_MRzero-OffRes_shapedPulse_Precompute`
+`004_MRzero-OffRes`
 
 - Group: zMRI Lab (Prof. Zaiss)
 - Version: 1.4.0
