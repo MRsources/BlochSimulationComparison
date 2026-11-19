@@ -10,7 +10,7 @@ Deviations from the example, and why:
   * n_slices 3 -> 1. With a single slice the example's rf.freq_offset works out
     to zero, so the slice loop and the offset are dropped instead of being
     carried along as no-ops.
-  * slice_thickness 3 mm -> 4 mm, to match the phantom slab
+  * slice_thickness 3 mm -> 5 mm, to match the phantom slab
   * fov 220 mm -> 256 mm (from common.py). At 220 mm the 217 mm wide BrainWeb
     phantom would fold over in the phase encode direction.
   * system limits come from common.py

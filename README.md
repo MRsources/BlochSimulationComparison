@@ -18,7 +18,7 @@ This is no challenge, there is no winner, this is only a comparison study, to se
 | Path | Purpose |
 | --- | --- |
 | [sequences/](sequences/) | The four Pulseq 1.5.0 `.seq` files, and the scanner constants. |
-| [phantoms/brainweb/](phantoms/brainweb/) | The 4 mm BrainWeb slab (`T2' = inf` and `T2'` as published). |
+| [phantoms/brainweb/](phantoms/brainweb/) | The 5 mm BrainWeb slab (`T2' = inf` and `T2'` as published). |
 
 These two folders stay as published, including the scanner constants beside the sequences: B0, gamma, Larmor, FOV, matrix, slice thickness, and the hardware limits. Discretization, the intra-voxel model, the time step, the hardware, and the spin count are the team's choice.
 
@@ -27,7 +27,7 @@ These two folders stay as published, including the scanner constants beside the 
 
 Five comparisons. Cases 0–3 share one phantom. Case 4 repeats the EPI sequence on the phantom that carries the published `T2'`. Scanner constants and sequence details are in [sequences/README.md](sequences/README.md). The phantom grid is in [phantoms/brainweb/README.md](phantoms/brainweb/README.md).
 
-**Case 0, FID.** [sequences/case0_fid.seq](sequences/case0_fid.seq) on [phantoms/brainweb/challenge-brain-4mm.json](phantoms/brainweb/challenge-brain-4mm.json). No readout gradient, 1024 samples. Check for sign, conjugation, and scaling.
+**Case 0, FID.** [sequences/case0_fid.seq](sequences/case0_fid.seq) on [phantoms/brainweb/challenge-brain-5mm.json](phantoms/brainweb/challenge-brain-5mm.json). No readout gradient, 1024 samples. Check for sign, conjugation, and scaling.
 
 **Case 1, RF-spoiled GRE.** [sequences/case1_gre.seq](sequences/case1_gre.seq) on the same phantom, where `T2'` is infinite. 64x64 samples. Steady state, spoiling, and gradient handling.
 
@@ -35,7 +35,7 @@ Five comparisons. Cases 0–3 share one phantom. Case 4 repeats the EPI sequence
 
 **Case 3, EPI.** [sequences/case3_epi.seq](sequences/case3_epi.seq), one 43.5 ms shot, on the same phantom. 64x64 samples. Gradient timing and off-resonance along the train.
 
-**Case 4, EPI with T2'.** The same [sequences/case3_epi.seq](sequences/case3_epi.seq) on [phantoms/brainweb/challenge-brain-4mm-t2star.json](phantoms/brainweb/challenge-brain-4mm-t2star.json), where `T2'` is the published value. 4096 samples. The only change from case 3 is the T2* model.
+**Case 4, EPI with T2'.** The same [sequences/case3_epi.seq](sequences/case3_epi.seq) on [phantoms/brainweb/challenge-brain-5mm-t2star.json](phantoms/brainweb/challenge-brain-5mm-t2star.json), where `T2'` is the published value. 4096 samples. The only change from case 3 is the T2* model.
 
 ## How to submit
 

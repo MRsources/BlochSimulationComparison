@@ -10,7 +10,7 @@ revision 0
 AdcRasterTime 1e-07 
 B0 3 
 BlockDurationRaster 1e-05 
-FOV 0.256 0.256 0.004 
+FOV 0.256 0.256 0.005 
 GradientRasterTime 1e-05 
 Name case2_tse 
 Nx 64 
@@ -385,15 +385,15 @@ TotalDuration 10
 # id amplitude first last amp_shape_id time_shape_id delay
 # ..      Hz/m  Hz/m Hz/m        ..         ..          us
 [GRADIENTS]
-1       400000            0       400000 1 2 0
-2       400000       400000       400000 5 6 0
-3       400000       400000       400000 7 8 0
-5       400000       400000       400000 5 11 0
+1       320000            0       320000 1 2 0
+2       320000       320000       320000 5 6 0
+3       320000       320000       320000 7 8 0
+5       320000       320000       320000 5 11 0
 6       180393            0      39062.5 12 13 0
-8       614583       400000            0 14 13 0
+8       491667       320000            0 14 13 0
 9      39062.5      39062.5      39062.5 5 15 0
 10       180393      39062.5            0 16 13 0
-11       614583            0       400000 17 13 0
+11       491667            0       320000 17 13 0
 
 # Format of trapezoid gradients:
 # id amplitude rise flat fall delay
@@ -5096,4 +5096,4 @@ num_samples 4
 # It can be reproduced/verified with md5sum if the file trimmed to the position right above [SIGNATURE]
 # The new line character preceding [SIGNATURE] BELONGS to the signature (and needs to be stripped away for recalculating/verification)
 Type md5
-Hash 5879de196f73924ee480804af1cc22ba
+Hash 60cb653041f82eb9ab3f01370e61477f

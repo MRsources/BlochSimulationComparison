@@ -10,7 +10,7 @@ revision 0
 AdcRasterTime 1e-07 
 B0 3 
 BlockDurationRaster 1e-05 
-FOV 0.256 0.256 0.004 
+FOV 0.256 0.256 0.005 
 GradientRasterTime 1e-05 
 Name case3_epi 
 Nx 64 
@@ -163,10 +163,10 @@ TotalDuration 0.04752
 # id amplitude rise flat fall delay
 # ..      Hz/m   us   us   us    us
 [TRAP]
- 1       333333  70 3000  70  30
+ 1       266667  50 3000  50  50
  2      -300973 190  420 190   0
  3      -195312 160  480 160   0
- 4      -882184 220  360 220   0
+ 4      -689266 210  380 210   0
  5       781250 150  320 150   0
  6       130208  30    0  30   0
  7      -781250 150  320 150   0
@@ -3204,4 +3204,4 @@ num_samples 3000
 # It can be reproduced/verified with md5sum if the file trimmed to the position right above [SIGNATURE]
 # The new line character preceding [SIGNATURE] BELONGS to the signature (and needs to be stripped away for recalculating/verification)
 Type md5
-Hash 5eb5c2d62e44c4d386adf21df352a650
+Hash 1834f5ddfebc15817ccffcf8c40d6f7c

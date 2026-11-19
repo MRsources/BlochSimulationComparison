@@ -4,7 +4,7 @@ Closely modelled on PyPulseq v1.5.0 ``examples/scripts/write_tse.py``.
 
 Deviations from the example, and why:
 
-  * slice_thickness 5 mm -> 4 mm, to match the phantom slab
+  * the slice stays at the example's 5 mm, matching the phantom slab
   * n_slices is dropped (the example already ran with n_slices = 1, so the slice
     loop and its freq_offset arithmetic were no-ops)
   * FOV, matrix and system limits come from common.py (only max_grad differs

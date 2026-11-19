@@ -10,7 +10,7 @@ revision 0
 AdcRasterTime 1e-07 
 B0 3 
 BlockDurationRaster 1e-05 
-FOV 0.256 0.256 0.004 
+FOV 0.256 0.256 0.005 
 GradientRasterTime 1e-05 
 Name case0_fid 
 RadiofrequencyRasterTime 1e-06 
@@ -20,8 +20,8 @@ TotalDuration 0.02609
 # NUM DUR RF  GX  GY  GZ  ADC  EXT
 [BLOCKS]
 1 320   1   0   0   1  0  0
-2  65   0   0   0   2  0  0
-3 174   0   0   0   0  0  0
+2  56   0   0   0   2  0  0
+3 183   0   0   0   0  0  0
 4 2050   0   0   0   0  1  0
 
 # Format of RF events:
@@ -35,8 +35,8 @@ TotalDuration 0.02609
 # id amplitude rise flat fall delay
 # ..      Hz/m   us   us   us    us
 [TRAP]
- 1       333333  70 3000  70  30
- 2 -1.18992e+06 220  210 220   0
+ 1       266667  50 3000  50  50
+ 2  -1.1619e+06 210  140 210   0
 
 # Format of ADC events:
 # id num dwell delay freqPPM phasePPM freq phase phase_id
@@ -3071,4 +3071,4 @@ num_samples 3000
 # It can be reproduced/verified with md5sum if the file trimmed to the position right above [SIGNATURE]
 # The new line character preceding [SIGNATURE] BELONGS to the signature (and needs to be stripped away for recalculating/verification)
 Type md5
-Hash 5d8ac6e667134fb7d1ba3097d1406c20
+Hash dbf035b32bd42a44818a67eab8c2acb2

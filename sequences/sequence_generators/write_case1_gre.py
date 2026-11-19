@@ -6,7 +6,7 @@ between this file and the upstream example is easy to see.
 
 Deviations from the example, and why:
 
-  * slice_thickness 3 mm -> 4 mm, to match the phantom slab (common.SLICE_THICKNESS)
+  * slice_thickness 3 mm -> 5 mm, to match the phantom slab (common.SLICE_THICKNESS)
   * system limits come from common.py, which takes the most conservative value
     across the three examples we follow, so one system is valid for all cases
   * FOV and matrix come from common.py
