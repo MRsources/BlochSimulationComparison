@@ -36,11 +36,11 @@ MIN_STATE = 1e-3
 
 # Case 4 repeats the EPI file on the phantom that carries T2'.
 CASES = (
-    (0, 'case0_fid.seq', 'challenge-brain-4mm.json'),
-    (1, 'case1_gre.seq', 'challenge-brain-4mm.json'),
-    (2, 'case2_tse.seq', 'challenge-brain-4mm.json'),
-    (3, 'case3_epi.seq', 'challenge-brain-4mm.json'),
-    (4, 'case3_epi.seq', 'challenge-brain-4mm-t2star.json'),
+    (0, 'case0_fid.seq', 'challenge-brain-5mm.json'),
+    (1, 'case1_gre.seq', 'challenge-brain-5mm.json'),
+    (2, 'case2_tse.seq', 'challenge-brain-5mm.json'),
+    (3, 'case3_epi.seq', 'challenge-brain-5mm.json'),
+    (4, 'case3_epi.seq', 'challenge-brain-5mm-t2star.json'),
 )
 
 

@@ -7,8 +7,8 @@ Run::
 
     python phantoms/brainweb/scripts/translate_phantom_koma.py
     python phantoms/brainweb/scripts/translate_phantom_koma.py --t2star --spins-per-voxel 60
-    python phantoms/brainweb/scripts/translate_phantom_koma.py phantoms/brainweb/challenge-brain-4mm.json \
-        --out phantoms/brainweb/challenge-brain-4mm.phantom
+    python phantoms/brainweb/scripts/translate_phantom_koma.py phantoms/brainweb/challenge-brain-5mm.json \
+        --out phantoms/brainweb/challenge-brain-5mm.phantom
 """
 
 from __future__ import annotations
@@ -25,8 +25,8 @@ DENSITY_THRESHOLD = 1e-3
 
 
 def phantom_path(t2star: bool = False) -> Path:
-    """The published 4 mm slab. ``t2star=True`` keeps the published T2'."""
-    name = 'challenge-brain-4mm-t2star.json' if t2star else 'challenge-brain-4mm.json'
+    """The published 5 mm slab. ``t2star=True`` keeps the published T2'."""
+    name = 'challenge-brain-5mm-t2star.json' if t2star else 'challenge-brain-5mm.json'
     path = BRAINWEB / name
     if not path.is_file():
         raise SystemExit(f'{path} not found')
@@ -56,7 +56,7 @@ def export(phantom_json: Path, out: Path | None = None, spins_per_voxel: int = 1
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument('phantom', nargs='?', type=Path, default=None,
-                        help='BIfTI phantom JSON (default: the 4 mm challenge slab)')
+                        help='BIfTI phantom JSON (default: the 5 mm challenge slab)')
     parser.add_argument('--t2star', action='store_true',
                         help="use the phantom that keeps the published T2' (case 4)")
     parser.add_argument('--spins-per-voxel', type=int, default=1,
