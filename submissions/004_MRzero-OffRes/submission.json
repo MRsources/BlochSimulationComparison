@@ -1,6 +1,6 @@
 {
   "group": "zMRI Lab (Prof. Zaiss)",
-  "tool_name": "MR-zero + PDG Offresonance extention",
+  "tool_name": "MR-zero + PDG off-resonance extention",
   "tool_version": "1.4.0",
   "tool_commit": "",
   "tool_date": "",
@@ -15,5 +15,5 @@
     {"case": 3, "runtime_s":null, "mrzero_runtime_s":null },
     {"case": 4, "runtime_s":null, "mrzero_runtime_s":null }
   ],
-  "setup_notes": "Uses a block pulse approximation for all pulses."
+  "setup_notes": "Uses a discretization of the RF shape and precomputes the PDG operators."
 }
